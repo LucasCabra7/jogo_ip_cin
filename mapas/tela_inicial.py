@@ -20,6 +20,9 @@ def play2(): # Entrar como personagem BOZO:
     pygame.quit()
 
 pygame.init()
+pygame.mixer.init()
+music_initial = pygame.mixer.Sound("assets/funk do sax.mp3")
+music_initial.set_volume(0.08)
 
 # Configuração da janela
 window = pygame.display.set_mode([1280, 800])
@@ -36,6 +39,7 @@ button2 = botao.Button(1000, 555, button2_img, 1)
 
 loop = True
 while loop:
+    music_initial.play()
     window.blit(background, (0, 0))  # Desenha o fundo
     
     if button1.draw(window):
