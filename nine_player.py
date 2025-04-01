@@ -112,4 +112,6 @@ def bozo_game():
 
     # Encerra o Pygame
     pygame.quit()
-bozo_game()
+
+if __name__ == "__main__":
+    bozo_game()
