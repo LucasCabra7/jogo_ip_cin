@@ -26,7 +26,7 @@ ALTURA = len(mapa) * tamanho_do_bloco
 parede = pygame.image.load(r"assets\parede.png", "r") 
 parede = pygame.transform.scale(parede, (tamanho_do_bloco, tamanho_do_bloco))
 
-chao  = pygame.image.load(r"assets55\chão.png", "r") 
+chao  = pygame.image.load(r"assets\chão.png", "r") 
 chao  = pygame.transform.scale(chao, (tamanho_do_bloco, tamanho_do_bloco))
 
 pygame.init()
@@ -48,5 +48,6 @@ while rodando:
                 tela.blit(parede,(linha * tamanho_do_bloco, coluna * tamanho_do_bloco))
             else:
                 tela.blit(chao,(linha * tamanho_do_bloco, coluna * tamanho_do_bloco) )
+    pygame.display.flip()
     
 pygame.quit()
