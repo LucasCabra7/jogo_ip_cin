@@ -1,6 +1,6 @@
 import pygame
 import random
-def nine_game():
+def player_game():
     # Inicializar o Pygame
     pygame.init()
     pygame.mixer.init()
@@ -18,7 +18,7 @@ def nine_game():
 
     # Configura a janela do jogo
     tela = tela_jogo.proporcao()
-    pygame.display.set_caption("Nine Game")
+    pygame.display.set_caption("player Game")
 
     # Carrega os sprites do boneco
     sprite_parado = pygame.image.load("assets/boneco_parado.png")
@@ -27,10 +27,8 @@ def nine_game():
     sprite_cima = [pygame.image.load(f"assets/cima_{i}.png") for i in range(1, 4)]
     sprite_baixo = [pygame.image.load(f"assets/baixo_{i}.png") for i in range(1, 4)]
 
-    # som quando pegar joia
-
     # Posição inicial do boneco
-    x_nine, y_nine = 960, 540
+    x_player, y_player = 960, 540
     velocidade = 15
     indice_sprite = 0  # Controla a troca dos sprites
     direcao = "parado"  # Estado inicial
@@ -57,19 +55,19 @@ def nine_game():
         # Captura teclas pressionadas
         teclas = pygame.key.get_pressed()
         if teclas[pygame.K_LEFT]:  
-            x_nine -= velocidade
+            x_player -= velocidade
             direcao = "esquerda"
             sprite_parado = pygame.image.load("assets/esquerda_1.png")
         elif teclas[pygame.K_RIGHT]:  
-            x_nine += velocidade
+            x_player += velocidade
             direcao = "direita"
             sprite_parado = pygame.image.load("assets/direita_1.png")
         elif teclas[pygame.K_UP]:  
-            y_nine -= velocidade
+            y_player -= velocidade
             direcao = "cima"
             sprite_parado = pygame.image.load("assets/cima_1.png")
         elif teclas[pygame.K_DOWN]:  
-            y_nine += velocidade
+            y_player += velocidade
             direcao = "baixo"
             sprite_parado = pygame.image.load("assets/boneco_parado.png")
         else:
@@ -83,30 +81,30 @@ def nine_game():
 
         # Escolhe qual sprite exibir
         if direcao == "esquerda":
-            nine = sprite_esquerda[indice_sprite]
+            player = sprite_esquerda[indice_sprite]
         elif direcao == "direita":
-            nine = sprite_direita[indice_sprite]
+            player = sprite_direita[indice_sprite]
         elif direcao == "cima":
-            nine = sprite_cima[indice_sprite]
+            player = sprite_cima[indice_sprite]
         elif direcao == "baixo":
-            nine = sprite_baixo[indice_sprite]
+            player = sprite_baixo[indice_sprite]
         else:
-            nine = sprite_parado
+            player = sprite_parado
 
-        #nine pegou a joia
-        rect_nine = nine.get_rect(topleft=(x_nine, y_nine))
+        #player pegou a joia
+        rect_player = player.get_rect(topleft=(x_player, y_player))
         rect_joia = joia.get_rect(topleft=local_joia)
         
-        if rect_nine.colliderect(rect_joia):
+        if rect_player.colliderect(rect_joia):
             local_joia = posicao_joia()
 
         # fundo da tela
         tela.fill((255, 255, 255))
 
         # Desenha boneco atualizado
-        tela.blit(nine, (x_nine, y_nine))
+        tela.blit(player, (x_player, y_player))
         tela.blit(joia, local_joia)
-        pygame.draw.rect(tela, (255, 0, 0), rect_nine, 2)  # Retângulo do boneco (vermelho)
+        pygame.draw.rect(tela, (255, 0, 0), rect_player, 2)  # Retângulo do boneco (vermelho)
         pygame.draw.rect(tela, (0, 255, 0), rect_joia, 2)  # Retângulo da joia (verde)
         # Atualiza a tela
         pygame.display.update()
@@ -115,4 +113,4 @@ def nine_game():
     pygame.quit()
 
 if __name__ == "__main__":
-    nine_game()
+    player_game()
