@@ -71,10 +71,10 @@ def bozo_game():
         elif teclas[pygame.K_DOWN]:  
             y_bozo += velocidade
             direcao = "baixo"
-            sprite_parado = pygame.image.load("assets/baixo_3.png")
+            sprite_parado = pygame.image.load("assets/boneco_parado.png")
         else:
             direcao = "parado"
-
+            sprite_parado = pygame.image.load("assets/boneco_parado.png")
         # Atualiza o índice do sprite para a animação
         if direcao in ["esquerda", "direita", "cima", "baixo"]:
             indice_sprite = (indice_sprite + 1) % 3

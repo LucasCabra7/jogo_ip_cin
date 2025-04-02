@@ -23,8 +23,8 @@ def iniciar_tela():
     button1 = botao.Button(650, 30, button1_img, 0.4)
     button2 = botao.Button(950, 30, button2_img, 0.4)
 
-    pygame.mixer.music.load("assets/leila.mp3")
-    pygame.mixer.music.set_volume(0.5)
+    pygame.mixer.music.load("assets/toque leila.mp3")
+    pygame.mixer.music.set_volume(0.3)
     pygame.mixer.music.play(-1)
 
     loop = True
