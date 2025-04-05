@@ -1,6 +1,7 @@
 import pygame
 import subprocess
-from mapas import botao
+import botao
+import player
 
 def play2():  # Função que inicia o jogo quando clicar no botão "Jogar"
     print("Iniciando Jogo 2...")

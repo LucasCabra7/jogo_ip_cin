@@ -66,18 +66,18 @@ class Player:
 
             #(PARTE INIMIGO)
             #movendo o inimigo em direção ao jogador
-            inimigo.mover_em_self.direcao_player(self.x_player, self.y_player)
+            #inimigo.mover_em_self.direcao_player(self.x_player, self.y_player)
 
             #verificando se o inimigo colidiu com o jogador
-            if inimigo.checar_colisao(self.x_player, self.y_player, largura_player, altura_player):
-                print("O jogador foi pego! Fim de jogo!")
-                rodando = False #encerra o jogo
+            #if inimigo.checar_colisao(self.x_player, self.y_player, self.largura_player, self.altura_player):
+                #print("O jogador foi pego! Fim de jogo!")
+                #rodando = False #encerra o jogo
             
             # Desenha boneco atualizado
-            tela.blit(self.player, (self.x_player, self.y_player))
-            inimigo.desenhar(tela) #desenha o inimigo
+            #tela.blit(self.player, (self.x_player, self.y_player))
+            #inimigo.desenhar(tela) #desenha o inimigo
 
-            pygame.display.update() #atualiza a tela
+            #pygame.display.update() #atualiza a tela
      
      #(PARTE INIMIGO)
         #vai criar o inimigo em uma posição aleatória
