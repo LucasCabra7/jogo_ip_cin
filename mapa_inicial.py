@@ -1,4 +1,5 @@
 import pygame
+
 class Map:
     def __init__(self, tamanho_bloco, tela): # Corrigi os parâmetros utilizados.
         self.mapa = [[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1],
@@ -36,20 +37,10 @@ class Map:
 
     def desenhar(self):
         # Configurações do Pygame
-        
-        rodando = True
-        while rodando:
-            self.tela.fill((150, 200, 200))
-            for evento in pygame.event.get():
-                if evento.type == pygame.QUIT:
-                    rodando = False
-
-            for coluna in range(len(self.mapa)):
-                for linha in range(len(self.mapa[coluna])):
-                    if self.mapa[coluna][linha] == 1:  # Se for parede
-                        self.tela.blit(self.parede,(linha * self.tamanho_do_bloco, coluna * self.tamanho_do_bloco))
-                    else:
-                        self.tela.blit(self.chao,(linha * self.tamanho_do_bloco, coluna * self.tamanho_do_bloco) )
-            pygame.display.flip()
-            
-        pygame.quit()
+        for coluna in range(len(self.mapa)):
+            for linha in range(len(self.mapa[coluna])):
+                if self.mapa[coluna][linha] == 1:  # Se for parede
+                    self.tela.blit(self.parede,(linha * self.tamanho_do_bloco, coluna * self.tamanho_do_bloco))
+                else:
+                    self.tela.blit(self.chao,(linha * self.tamanho_do_bloco, coluna * self.tamanho_do_bloco))
+    pygame.quit()

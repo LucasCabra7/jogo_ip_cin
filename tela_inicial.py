@@ -1,6 +1,5 @@
 import pygame
 import botao
-from player import iniciar_jogo
 
 def iniciar_tela():
     pygame.init()
