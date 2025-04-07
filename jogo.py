@@ -1,5 +1,6 @@
 import pygame
 import random
+import tela_final
 from inimigo import Inimigo #vai importar a classe do inimigo
 import colisoes
 from mapa_inicial import Map
@@ -38,6 +39,7 @@ def iniciar_jogo(): # Função para iniciar o jogo com as importações do Mapa,
         if inimigo.checar_colisao(jogador.x_player, jogador.y_player, jogador.largura_player, jogador.altura_player): # Checar a colisão entre o ´Inimigo()´ e o ´Player()´.
             print('O jogador foi pego! Fim de jogo!') # Imprime caso aconteça.
             rodando = False # Finaliza o jogo.
+            tela_final.imagem_final()
         
         pygame.display.update()
 
