@@ -1,6 +1,7 @@
 import pygame
 import tela_inicial
 from jogo import *
+
 pygame.init()
 
 acao = tela_inicial.iniciar_tela() # Chamando a função de tela inicial.
