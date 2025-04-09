@@ -2,7 +2,7 @@ import pygame
 import botao
 import os
 
-os.environ['SDL_VIDEO_CENTERED'] = '1'
+os.environ['SDL_VIDEO_CENTERED'] = '1' # Manter a tela no centro
 
 def iniciar_tela():
     pygame.init()

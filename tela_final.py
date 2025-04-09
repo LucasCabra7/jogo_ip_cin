@@ -2,7 +2,7 @@ import os
 import pygame
 import time
 
-os.environ['SDL_VIDEO_CENTERED'] = '1'
+os.environ['SDL_VIDEO_CENTERED'] = '1' # Manter a tela no centro
 
 def imagem_final():
     pygame.init()
@@ -21,5 +21,25 @@ def imagem_final():
     window.blit(background, (0, 0))
     pygame.display.update()
 
-    time.sleep(5)
+    # Início do temporizador
+    start_time = pygame.time.get_ticks()
+
+    # Loop para manter a janela ativa e escutar eventos
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.mixer.music.stop()
+                pygame.quit()
+                return  # Encerra a função se clicar no "X"
+
+        # Calcula o tempo decorrido
+        elapsed_time = (pygame.time.get_ticks() - start_time) / 1000  # em segundos
+        if elapsed_time >= 17:
+            running = False
+
+        pygame.time.delay(100)  # Alivia o uso de CPU
+
     pygame.mixer.music.stop()
+
+
