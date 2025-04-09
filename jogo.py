@@ -1,45 +1,84 @@
 import pygame
 import tela_final
-from inimigo import Inimigo #vai importar a classe do inimigo
-import colisoes
+from inimigo import Inimigo
+from calango import Calango
 from mapa_inicial import Map
 from player import Player
+import random
+pygame.mixer.init()
 
+def iniciar_jogo():
+    print('Função iniciar_jogo() foi chamada!')
 
-def iniciar_jogo(): # Função para iniciar o jogo com as importações do Mapa, inimigo (com colisão) e ´coletaveis (ainda falta).´
-    print('Função iniciar_jogo() foi chamada!') # Print para verificar que está funcionando.
+    pygame.display.set_caption("Jogo Principal")
+    tela = pygame.display.set_mode((1280, 800))
 
-    pygame.display.set_caption("Jogo Princial") # Nome da tela.
-    tela = pygame.display.set_mode((1280, 800)) # Tamanho da tela.
+    mapa = Map(34, tela)
+    jogador = Player()
+    inimigo = Inimigo(800, 300)
+    calango = Calango(170, 204)
+    calango.carregar_sprites()
+    rodando = True
+    relogio = pygame.time.Clock()
 
-    mapa = Map(34, tela) # Chamando a classe ´Map´ com ´tamanho do mapa e tela´.
-    jogador = Player() # Chamando a classe do ´Player´.
-    inimigo = Inimigo(800, 300) # Chmando a classe do ´Inimigo´ com ´largura e altura´.
+    pontuacao = 0
+    calango_ativo = True
+    tempo_desaparecimento = 0
 
-    rodando = True # Booleano.
-    relogio = pygame.time.Clock() # Clock do fps.
+    while rodando:
+        relogio.tick(60)
+        tela.fill((0, 0, 0))
 
-    while rodando: # Loop para rodar a tela:
-        relogio.tick(60) # Clock fixo em 60fps.
-        tela.fill((0, 0, 0)) # Fundo da tela ´TALVEZ CORRIGIR´.
-
-        for evento in pygame.event.get(): # Caso aperte em ´X´
+        for evento in pygame.event.get():
             if evento.type == pygame.QUIT:
-                rodando = False # Sai da tela.
-        
-        teclas = pygame.key.get_pressed() # Verificar o pressionamento das teclas ´Direita, Esquerda, Frente e Trás´.
-        jogador.mover_player(teclas) # Verifica qual tecla foi pressioanda o ´Player()´.
-        inimigo.mover_em_direcao(jogador.x_player, jogador.y_player) # Verifica a qual é lugar que se encontra ´Player()´ para o ´Inimigo()´ segui-lo.
+                rodando = False
 
-        mapa.desenhar() # Desenhar o mapa na tela.
-        jogador.desenhar(tela) # Desenhar o ´Player()´ na tela. (FALTA CORRIGIR)
-        inimigo.desenhar(tela) # Desenha o ´Inimigo()´ na tela. (FALTA CORRIGIR)
+        teclas = pygame.key.get_pressed()
+        jogador.mover_player(teclas)
 
-        if inimigo.checar_colisao(jogador.x_player, jogador.y_player, jogador.largura_player, jogador.altura_player): # Checar a colisão entre o ´Inimigo()´ e o ´Player()´.
-            print('O jogador foi pego! Fim de jogo!') # Imprime caso aconteça.
-            rodando = False # Finaliza o jogo.
+        if calango_ativo:
+            calango.fugir(jogador.x_player, jogador.y_player)
+
+        inimigo.mover_em_direcao(jogador.x_player, jogador.y_player)
+        mapa.desenhar()
+        jogador.desenhar(tela)
+
+        if calango_ativo:
+            calango.desenhar(tela)
+
+        if inimigo.checar_colisao(jogador.x_player, jogador.y_player, jogador.largura_player, jogador.altura_player):
+            print('O jogador foi pego! Fim de jogo!')
+            pygame.mixer.music.load("assets/alerta-policia.mp3")
+            pygame.mixer.music.set_volume(0.3)
+            pygame.mixer.music.play()
+            pygame.time.delay(3000)
+            rodando = False
             tela_final.imagem_final()
-        
+
+        inimigo.desenhar(tela)
+
+        # Checar colisão com o calango
+        if calango_ativo and calango.checar_colisao(jogador.x_player, jogador.y_player, jogador.largura_player, jogador.altura_player):
+            print('Pegou o calanguinho!')
+            pygame.mixer.music.load("assets/uepa-ratinho.mp3")
+            pygame.mixer.music.set_volume(0.3)
+            pygame.mixer.music.play()
+            pontuacao += 1
+            print(f"Pontuação: {pontuacao}")
+            calango_ativo = False
+            tempo_desaparecimento = pygame.time.get_ticks()
+
+            if pontuacao >= 5:
+                print("Você venceu! Pegou todos os calangos!")
+                pygame.time.delay(3000)
+                rodando = False
+                tela_final.imagem_final()
+
+        # Verifica se o calango deve reaparecer
+        if not calango_ativo and pygame.time.get_ticks() - tempo_desaparecimento > 2000:
+            calango.x, calango.y = random.choice([(34, 34), (102, 68), (170, 204), (340, 136), (476, 442)]) #escolhe uma posição aleatória para o calango aparecer
+            calango_ativo = True
+
         pygame.display.update()
 
     pygame.quit()

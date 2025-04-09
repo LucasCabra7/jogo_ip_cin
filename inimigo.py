@@ -38,23 +38,21 @@ class Inimigo:
 
     def mover_em_direcao(self, x_player, y_player):
         direcoes = ["esquerda", "direita", "cima", "baixo"]
-        dst_init = math.sqrt((x_player - self.x)**2 + (y_player - self.y)**2)
-        distancias = [math.sqrt((x_player - (self.x - self.velocidade))**2 + (y_player - self.y)**2),
-                        math.sqrt((x_player - (self.x + self.velocidade))**2 + (y_player - self.y)**2),
-                         math.sqrt((x_player - self.x)**2 + (y_player - (self.y - self.velocidade))**2),
-                          math.sqrt((x_player - self.x)**2 + (y_player - (self.y + self.velocidade))**2)]
-        distancias_copy = distancias.copy()
-        direcoes_copy = direcoes.copy()
-        for dst in range(len(distancias_copy)):
-            novo_x, novo_y, bateu = Colisao.verificar_colisao_parede(self.x, self.y, self.velocidade, direcoes_copy[dst]) 
-            if bateu == True:
-                distancias.remove(distancias_copy[dst])
-                direcoes.remove(direcoes_copy[dst])
-        menor = min(distancias)
-        melhor_direcao = direcoes[distancias.index(menor)]
-        self.x, self.y, bateu = Colisao.verificar_colisao_parede(self.x, self.y, self.velocidade, melhor_direcao)
-        self.direcao = melhor_direcao
+        dict_direcao = {}
+        
+        # Primeiro: verificar todas as direções possíveis
+        for direcao in direcoes:
+            novo_x, novo_y, bateu = Colisao.verificar_colisao_parede(self.x, self.y, self.velocidade, direcao)
+            if not bateu:
+                # Calcula a distância até o jogador para esta direção válida
+                distancia = math.sqrt((x_player - novo_x)**2 + (y_player - novo_y)**2)
+                dict_direcao[direcao] = distancia
+        
+        # Se houver direções válidas
+        if dict_direcao:
+            # Encontra a direção que mais aproxima do jogador ou mais se distancia
+            melhor_direcao = min(dict_direcao.keys(), key=lambda k: dict_direcao[k])
+            self.x, self.y, _ = Colisao.verificar_colisao_parede(self.x, self.y, self.velocidade, melhor_direcao)
+            self.direcao = melhor_direcao
+        
         self.atualizar_sprite()
-
-
-    
