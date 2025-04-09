@@ -63,7 +63,7 @@
    - **Calangos**: 5 aparecem aleatoriamente no mapa. Cada um possui uma **IA de fuga**, que os faz se afastar do **"PLAYER"** quando ele se aproxima. Ao ser coletado, o **"PLAYER"** recebe um **aumento de velocidade (+2)** por 2 segundos;
    - **Sacos de dinheiro**: 2 aparecem aleatoriamente no mapa. Quando coletados, o **"INIMIGO"** é **paralisado por 1 segundo**;
 
-7. Implementamos a lógica de **colisão** entre o **"PLAYER"**, o **"INIMIGO"** e os **"CALANGOS"** com as áreas **sólidas** do mapa (as paredes), impedindo que atravessem barreiras. Para isso, utilizamos conceitos de **grafos**;
+7. Implementamos a lógica de **colisão** entre o **"PLAYER"**, o **"INIMIGO"** e os **"CALANGOS"** com as áreas **sólidas** do mapa (as paredes), impedindo que atravessem barreiras. Para isso, utilizamos conceitos de **difereção cartesiana com vetores**;
 
 8. Criamos a **tela final**. O jogo termina de duas formas: caso o **"PLAYER"** seja capturado pelo **"INIMIGO"** ou consiga coletar os 5 **"CALANGOS"**. Em ambos os casos, é exibida uma tela de encerramento com os botões **"JOGAR NOVAMENTE"** e **"SAIR"**, conforme o desfecho.
 
@@ -73,7 +73,7 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pycharm/pycharm-original.svg" width="40" height="40" /> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg" width="40" height="40"/> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" width="40" height="40" />
 
 <h2> 📚 BIBLIOTECAS: </h2>
-Pygame, Math para verificar as possíveis direções do INIMIGO para perseguição do PLAYER.
+Pygame, Math para verificar as possíveis direções do INIMIGO para perseguição do PLAYER e Os para centralizar as telas principais do jogo.
 
 <h2> 🎮 DIVISÕES: </h2>
 
