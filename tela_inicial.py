@@ -1,5 +1,8 @@
 import pygame
 import botao
+import os
+
+os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 def iniciar_tela():
     pygame.init()

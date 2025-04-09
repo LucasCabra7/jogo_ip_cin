@@ -1,5 +1,4 @@
 import pygame
-import random
 import tela_final
 from inimigo import Inimigo #vai importar a classe do inimigo
 import colisoes

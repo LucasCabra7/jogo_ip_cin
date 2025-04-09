@@ -2,13 +2,17 @@ import pygame
 import tela_inicial
 from jogo import *
 
-pygame.init()
+def main():
+    pygame.init()
 
-acao = tela_inicial.iniciar_tela() # Chamando a função de tela inicial.
+    while True:
+        acao = tela_inicial.iniciar_tela()  # Exibe a tela inicial e espera ação
 
-# Condicinal para verifica a ação do botão.
-if acao == "jogar": # Se o botão pressionado for ´JOGAR´:
-    iniciar_jogo()  # Chama a função ´iniciar_jogo()´ em ´player.py´.
-elif acao == "sair": # Se o botão pressionado for ´SAIR´:
-    pygame.quit() # Aqui sai do jogo.
-    exit() # Fecha a tela geral.
+        if acao == "jogar":
+            iniciar_jogo()  # Inicia o jogo
+        elif acao == "sair":
+            pygame.quit()
+            exit()
+
+if __name__ == '__main__':
+    main()

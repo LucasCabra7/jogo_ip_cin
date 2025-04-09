@@ -1,4 +1,7 @@
 import pygame
+import os
+
+os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 class Map:
     def __init__(self, tamanho_bloco, tela): # Corrigi os parâmetros utilizados.
