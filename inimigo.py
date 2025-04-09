@@ -1,6 +1,6 @@
 import pygame
 import math
-
+from colisoes import Colisao
 class Inimigo:
     def __init__(self, x, y):
         self.x = x
@@ -20,24 +20,6 @@ class Inimigo:
         self.contador_frames = 0
         self.sprite_atual = self.sprites[self.direcao][self.frame_atual]
 
-    def mover_em_direcao(self, x_player, y_player):
-        dx = x_player - self.x
-        dy = y_player - self.y
-        distancia = math.hypot(dx, dy)
-
-        if distancia != 0:
-            self.x += self.velocidade * (dx / distancia)
-            self.y += self.velocidade * (dy / distancia)
-
-        self.atualizar_direcao(dx, dy)
-        self.atualizar_sprite()
-
-    def atualizar_direcao(self, dx, dy):
-        if abs(dx) > abs(dy):
-            self.direcao = "direita" if dx > 0 else "esquerda"
-        else:
-            self.direcao = "baixo" if dy > 0 else "cima"
-
     def atualizar_sprite(self):
         self.contador_frames += 1
         if self.contador_frames >= 10:
@@ -53,3 +35,26 @@ class Inimigo:
         rect_inimigo = pygame.Rect(self.x, self.y, self.sprite_atual.get_width(), self.sprite_atual.get_height())
         rect_player = pygame.Rect(x_player, y_player, largura_player, altura_player)
         return rect_inimigo.colliderect(rect_player)
+
+    def mover_em_direcao(self, x_player, y_player):
+        direcoes = ["esquerda", "direita", "cima", "baixo"]
+        dst_init = math.sqrt((x_player - self.x)**2 + (y_player - self.y)**2)
+        distancias = [math.sqrt((x_player - (self.x - self.velocidade))**2 + (y_player - self.y)**2),
+                        math.sqrt((x_player - (self.x + self.velocidade))**2 + (y_player - self.y)**2),
+                         math.sqrt((x_player - self.x)**2 + (y_player - (self.y - self.velocidade))**2),
+                          math.sqrt((x_player - self.x)**2 + (y_player - (self.y + self.velocidade))**2)]
+        distancias_copy = distancias.copy()
+        direcoes_copy = direcoes.copy()
+        for dst in range(len(distancias_copy)):
+            novo_x, novo_y, bateu = Colisao.verificar_colisao_parede(self.x, self.y, self.velocidade, direcoes_copy[dst]) 
+            if bateu == True:
+                distancias.remove(distancias_copy[dst])
+                direcoes.remove(direcoes_copy[dst])
+        menor = min(distancias)
+        melhor_direcao = direcoes[distancias.index(menor)]
+        self.x, self.y, bateu = Colisao.verificar_colisao_parede(self.x, self.y, self.velocidade, melhor_direcao)
+        self.direcao = melhor_direcao
+        self.atualizar_sprite()
+
+
+    

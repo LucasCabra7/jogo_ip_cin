@@ -12,7 +12,7 @@ def iniciar_jogo(): # Função para iniciar o jogo com as importações do Mapa,
     pygame.display.set_caption("Jogo Princial") # Nome da tela.
     tela = pygame.display.set_mode((1280, 800)) # Tamanho da tela.
 
-    mapa = Map(32, tela) # Chamando a classe ´Map´ com ´tamanho do mapa e tela´.
+    mapa = Map(34, tela) # Chamando a classe ´Map´ com ´tamanho do mapa e tela´.
     jogador = Player() # Chamando a classe do ´Player´.
     inimigo = Inimigo(800, 300) # Chmando a classe do ´Inimigo´ com ´largura e altura´.
 

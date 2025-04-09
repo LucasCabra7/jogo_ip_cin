@@ -1,15 +1,18 @@
 import pygame
+from colisoes import Colisao
+
 pygame.init()
 
 class Player:
     def __init__(self): # Criando a função principal com parâmetros:
-        self.x_player = 100 # Largura do boneco
-        self.y_player = 100 # Altura do boneco
+        self.x_player = 34 # Largura do boneco
+        self.y_player = 34 # Altura do boneco
         self.velocidade = 1
         self.direcao_player = "parado" # Inicia com a direção parado.
         self.carregar_sprites() # Função e carregar os sprites a cada interação.
         self.contador_frames = 0
         self.limite_frames_sprite = 10  # Altere esse valor para ajustar a velocidade da animação
+    
     def carregar_sprites(self):
         #carrega os sprites do boneco
         self.sprite_parado = pygame.image.load("assets/boneco_parado.png")
@@ -23,19 +26,18 @@ class Player:
 
     def mover_player(self, teclas): # Função para verificar as teclas e controlar a velocidade:  
         if teclas[pygame.K_LEFT]:
-            self.x_player -= self.velocidade
             self.direcao_player = "esquerda"
         elif teclas[pygame.K_RIGHT]:
-            self.x_player += self.velocidade
             self.direcao_player = "direita"
         elif teclas[pygame.K_UP]:
-            self.y_player -= self.velocidade
             self.direcao_player = "cima"
         elif teclas[pygame.K_DOWN]:
-            self.y_player += self.velocidade
             self.direcao_player = "baixo"
         else:
             self.direcao_player = "parado"
+
+        if self.direcao_player != "parado":
+           self.x_player, self.y_player, bateu = Colisao.verificar_colisao_parede(self.x_player, self.y_player, self.velocidade, self.direcao_player)
 
         self.atualizar_sprite() # Chama função de atualizar os Sprites a cada interação nas Teclas.
 
