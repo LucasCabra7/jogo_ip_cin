@@ -78,7 +78,9 @@ def iniciar_jogo():
         if not calango_ativo and pygame.time.get_ticks() - tempo_desaparecimento > 2000:
             calango.x, calango.y = random.choice([(34, 34), (102, 68), (170, 204), (340, 136), (476, 442)]) #escolhe uma posição aleatória para o calango aparecer
             calango_ativo = True
-
+            pygame.mixer.music.load("assets/calango correndo.mp3")
+            pygame.mixer.music.set_volume(0.3)
+            pygame.mixer.music.play()
         pygame.display.update()
 
     pygame.quit()

@@ -12,8 +12,7 @@ def imagem_final():
     pygame.display.set_caption("Fim de Jogo")
 
     background = pygame.image.load("assets/tela_final.png")
-    background = pygame.transform.scale(background, (1280, 800))  # <- Aqui está a correção
-
+    background = pygame.transform.scale(background, (1280, 800))
     pygame.mixer.music.load("assets/a-risada-do-kiko.mp3")
     pygame.mixer.music.set_volume(0.3)
     pygame.mixer.music.play()
@@ -35,11 +34,9 @@ def imagem_final():
 
         # Calcula o tempo decorrido
         elapsed_time = (pygame.time.get_ticks() - start_time) / 1000  # em segundos
-        if elapsed_time >= 17:
+        if elapsed_time >= 10:
             running = False
 
         pygame.time.delay(100)  # Alivia o uso de CPU
 
     pygame.mixer.music.stop()
-
-

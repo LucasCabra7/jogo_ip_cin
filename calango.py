@@ -49,8 +49,5 @@ class Calango:
         if dict_direcao:
             self.direcao = max(dict_direcao, key=dict_direcao.get)
             self.x, self.y, _ = Colisao.verificar_colisao_parede(self.x, self.y, self.velocidade, self.direcao)
-            pygame.mixer.music.load("assets/calango correndo.mp3")
-            pygame.mixer.music.set_volume(0.3)
-            pygame.mixer.music.play()
 
         self.atualizar_sprite()
