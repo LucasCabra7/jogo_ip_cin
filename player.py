@@ -11,7 +11,7 @@ class Player:
         self.direcao_player = "parado" # Inicia com a direção parado.
         self.carregar_sprites() # Função e carregar os sprites a cada interação.
         self.contador_frames = 0
-        self.limite_frames_sprite = 10  # Altere esse valor para ajustar a velocidade da animação
+        self.limite_frames_sprite = 7  # Altere esse valor para ajustar a velocidade da animação
     
     def carregar_sprites(self):
         #carrega os sprites do boneco
