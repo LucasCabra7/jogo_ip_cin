@@ -15,16 +15,20 @@ def iniciar_jogo():
 
     mapa = Map(34, tela)
     jogador = Player()
-    inimigo = Inimigo(800, 300)
-    calango = Calango(170, 204)
+    inimigo = Inimigo(800, 300) #Posição inicial do inimigo
+    calango = Calango(170, 204) #Posição inicial do calango
     calango.carregar_sprites()
     rodando = True
     relogio = pygame.time.Clock()
 
-    pontuacao = 0
+    calangos_coletados = 0
     calango_ativo = True
     tempo_desaparecimento = 0
-
+    boost = False
+    tempo_boost = 0
+    fonte = pygame.font.Font(None, 36)
+    cor = (0, 0, 0)  
+    
     while rodando:
         relogio.tick(60)
         tela.fill((0, 0, 0))
@@ -42,9 +46,13 @@ def iniciar_jogo():
         inimigo.mover_em_direcao(jogador.x_player, jogador.y_player)
         mapa.desenhar()
         jogador.desenhar(tela)
+        inimigo.desenhar(tela)
 
         if calango_ativo:
             calango.desenhar(tela)
+            pygame.mixer.music.load("assets/calango correndo.mp3")
+            pygame.mixer.music.set_volume(0.3)
+            pygame.mixer.music.play()
 
         if inimigo.checar_colisao(jogador.x_player, jogador.y_player, jogador.largura_player, jogador.altura_player):
             print('O jogador foi pego! Fim de jogo!')
@@ -55,32 +63,38 @@ def iniciar_jogo():
             rodando = False
             tela_final.imagem_final()
 
-        inimigo.desenhar(tela)
-
         # Checar colisão com o calango
         if calango_ativo and calango.checar_colisao(jogador.x_player, jogador.y_player, jogador.largura_player, jogador.altura_player):
             print('Pegou o calanguinho!')
             pygame.mixer.music.load("assets/uepa-ratinho.mp3")
             pygame.mixer.music.set_volume(0.3)
             pygame.mixer.music.play()
-            pontuacao += 1
-            print(f"Pontuação: {pontuacao}")
+            calangos_coletados += 1
             calango_ativo = False
-            tempo_desaparecimento = pygame.time.get_ticks()
-
-            if pontuacao >= 5:
-                print("Você venceu! Pegou todos os calangos!")
-                pygame.time.delay(3000)
-                rodando = False
-                tela_final.imagem_final()
+            tempo_desaparecimento = pygame.time.get_ticks()      
+            jogador.velocidade += 0.5 # Ativa boost de velocidade por 2 segundos
+            boost = True
+            tempo_boost = pygame.time.get_ticks()
 
         # Verifica se o calango deve reaparecer
         if not calango_ativo and pygame.time.get_ticks() - tempo_desaparecimento > 2000:
             calango.x, calango.y = random.choice([(34, 34), (102, 68), (170, 204), (340, 136), (476, 442)]) #escolhe uma posição aleatória para o calango aparecer
             calango_ativo = True
-            pygame.mixer.music.load("assets/calango correndo.mp3")
-            pygame.mixer.music.set_volume(0.3)
-            pygame.mixer.music.play()
+
+        texto = fonte.render(f"Calangos coletados: {calangos_coletados}", True, cor) # Texto que vai aparecer da pontuação
+        tela.blit(texto, (20, 20))  # Desenha o texto na posição (20, 20)
+        
+        if boost and pygame.time.get_ticks() - tempo_boost > 2000:
+            jogador.velocidade = 1
+            boost = False
+            print('Boost acabou. Velocidade normal.')
+        
+        if calangos_coletados >= 5:
+            print("Você venceu! Pegou todos os calangos!")
+            pygame.time.delay(3000)
+            rodando = False
+            tela_final.imagem_final()
+
         pygame.display.update()
 
     pygame.quit()
