@@ -37,7 +37,7 @@ class Player:
             self.direcao_player = "parado"
 
         if self.direcao_player != "parado":
-           self.x_player, self.y_player, bateu = Colisao.verificar_colisao_parede(self.x_player, self.y_player, self.velocidade, self.direcao_player)
+            self.x_player, self.y_player, bateu = Colisao.verificar_colisao_parede(self.x_player, self.y_player, self.velocidade, self.direcao_player)
 
         self.atualizar_sprite() # Chama função de atualizar os Sprites a cada interação nas Teclas.
 
