@@ -40,3 +40,37 @@ def imagem_final():
         pygame.time.delay(100)  # Alivia o uso de CPU
 
     pygame.mixer.music.stop()
+
+#tela em que o player é o grande vencedor!
+def imagem_vitoria():
+    pygame.init()
+    pygame.mixer.init()
+
+    window = pygame.display.set_mode([1280, 800])
+    pygame.display.set_caption("Você Venceu!")
+
+    vencedor = pygame.image.load(f"assets/vencedor.jpeg") #carrega a imagem do player vencendo
+    pygame.mixer.music.load("assets/vitoria_efeitosonoro.mp3") #audio de fundo vencedor
+    pygame.mixer.music.set_volume(0.3)
+    pygame.mixer.music.play()
+
+    window.blit(vencedor, (0, 0))
+    pygame.display.update()
+
+    start_time = pygame.time.get_ticks()
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.mixer.music.stop()
+                pygame.quit()
+                return
+
+        elapsed_time = (pygame.time.get_ticks() - start_time) / 1000
+        if elapsed_time >= 10:
+            running = False
+
+        pygame.time.delay(100)
+
+    pygame.mixer.music.stop()
