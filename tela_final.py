@@ -41,6 +41,7 @@ def imagem_final():
 
     pygame.mixer.music.stop()
 
+#tela em que o player é o grande vencedor!
 def imagem_vitoria():
     pygame.init()
     pygame.mixer.init()
@@ -48,8 +49,8 @@ def imagem_vitoria():
     window = pygame.display.set_mode([1280, 800])
     pygame.display.set_caption("Você Venceu!")
 
-    vencedor = pygame.image.load(f"assets/vencedor.jpeg")
-    pygame.mixer.music.load("assets/vitoria_efeitosonoro.mp3")
+    vencedor = pygame.image.load(f"assets/vencedor.jpeg") #carrega a imagem do player vencendo
+    pygame.mixer.music.load("assets/vitoria_efeitosonoro.mp3") #audio de fundo vencedor
     pygame.mixer.music.set_volume(0.3)
     pygame.mixer.music.play()
 
