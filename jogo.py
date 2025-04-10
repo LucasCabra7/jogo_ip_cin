@@ -93,7 +93,7 @@ def iniciar_jogo():
             print("Você venceu! Pegou todos os calangos!")
             pygame.time.delay(3000)
             rodando = False
-            tela_final.imagem_final()
+            tela_final.imagem_vitoria()
 
         pygame.display.update()
 
