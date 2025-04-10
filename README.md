@@ -102,5 +102,4 @@ Os maiores erros de inicio foi entender Orientação a Objetos.
 
 ![tela incial](https://github.com/user-attachments/assets/2af143c1-7afd-4131-b166-664f1f61a33c)
 
-![jogo](https://github.com/user-attachments/assets/ac9e24e7-626d-45b6-bd91-02e2d4aad07f)
-
+![jogo](https://github.com/user-attachments/assets/48ed3a9e-b1f2-4808-96f7-01dea9844aae)
