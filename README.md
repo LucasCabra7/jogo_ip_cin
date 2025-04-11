@@ -83,8 +83,6 @@ Pygame, Math para verificar as possíveis direções do INIMIGO para perseguiç�
 
 Todos os membros da equipe participaram ativamente do desenvolvimento do projeto, contribuindo de forma colaborativa por meio de canais como Discord e WhatsApp para tirar dúvidas, trocar ideias e propor melhorias. Cada integrante auxiliou na construção do código e na realização de alterações importantes, demonstrando comprometimento e trabalho em equipe ao longo de todo o processo.
 
-Todos os membros da equipe participaram ativamente do desenvolvimento do projeto, contribuindo de forma colaborativa por meio de canais como Discord e WhatsApp para tirar dúvidas, trocar ideias e propor melhorias. Cada integrante auxiliou na construção do código e na realização de alterações importantes, demonstrando comprometimento e trabalho em equipe ao longo de todo o processo.
-
 1. Lucas Cabral <lsc9> : Responsável pela criação da Tela inicial, criação do lógica geral dos botões, criação da lógica do Player e main.
  
 2. Gabriel Ferraz <gfaa> : Responsável pela criação dos Sprites, correção da lógica geral e criação da lógica do Player, Lógica da Colisão e Coletáveis.
