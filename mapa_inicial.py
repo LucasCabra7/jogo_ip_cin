@@ -34,7 +34,7 @@ class Map:
 
         #pygame.init()
         self.tela = pygame.display.set_mode((self.LARGURA, self.ALTURA))
-        pygame.display.set_caption("Mapa")
+        pygame.display.set_caption("Jogo")
 
         # Fundo
 

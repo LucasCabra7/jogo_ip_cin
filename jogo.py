@@ -10,8 +10,6 @@ pygame.mixer.init()
 
 def iniciar_jogo():
     print('Função iniciar_jogo() foi chamada!')
-
-    pygame.display.set_caption("Jogo Principal")
     tela = pygame.display.set_mode((1280, 800))
 
     mapa = Map(34, tela)
@@ -45,7 +43,7 @@ def iniciar_jogo():
     tempo_prisao = 0
     
     fonte = pygame.font.Font(None, 36) #36 original
-    cor = (0, 200, 0)  #R G B 
+    cor = (0, 0, 0)  # cor do texto
     
     pygame.mixer.music.load("assets/negroyazul.mp3") #musica de fundo
     pygame.mixer.music.set_volume(0.1)
@@ -150,9 +148,10 @@ def iniciar_jogo():
             calango_sound.set_volume(0.3)
             calango_sound.play()
 
-        texto = fonte.render(f"Calangos coletados: {calangos_coletados}", True, cor) # Texto que vai aparecer da pontuação
-        tela.blit(texto, (30, 7))  # Desenha o texto na posição original : (20, 20)
-        
+        calangos = fonte.render(f"Calangos coletados: {calangos_coletados}", True, cor, (255, 255, 255)) # Texto que vai aparecer da pontuação
+        grana = fonte.render(f"Dinheiros coletados: {dinheiro_coletado}", True, cor, (255, 255, 255)) # Texto que vai aparecer da pontuação
+        tela.blit(calangos, (30, 7))  # Desenha o texto na posição original : (20, 20)
+        tela.blit(grana, (550, 7))  # Desenha o texto na posição original : (20, 20)
         if boost and pygame.time.get_ticks() - tempo_boost > 2000: #quando acaba o tempo do boost de velocidade ( 2000 ) !!Suguestão aumentar
             jogador.velocidade = 1
             boost = False
@@ -165,7 +164,7 @@ def iniciar_jogo():
         
        
 
-        if calangos_coletados >= 5:
+        if calangos_coletados == 3:
             print("Você venceu! Pegou todos os calangos!")
             pygame.time.delay(3000)
             rodando = False
