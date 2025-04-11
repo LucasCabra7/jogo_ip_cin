@@ -68,7 +68,7 @@
 7. Criamos os elementos coletáveis:
 
 
-- Calangos: cinco aparecem aleatoriamente no mapa. Cada um possui uma IA de fuga, que os faz se afastar do PLAYER utilizando a distância máxima entre ambos. Ao ser coletado, o PLAYER recebe um aumento de velocidade de +0.5 por 1 segundo;
+- Calangos: três aparecem aleatoriamente no mapa. Cada um possui uma IA de fuga, que os faz se afastar do PLAYER utilizando a distância máxima entre ambos. Ao ser coletado, o PLAYER recebe um aumento de velocidade de +0.5 por 1 segundo;
 
 
 - Sacos de dinheiro: dois aparecem aleatoriamente no mapa. Quando coletados, o INIMIGO é paralisado por 1 segundo;
