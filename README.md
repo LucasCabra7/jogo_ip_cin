@@ -144,3 +144,6 @@ TELA DO JOGO COM COLETÁVEIS (CALANGO E BOLSA DE DINHEIRO) E INIMIGO:
 TELA FINAL DE DERROTA: 
 ![tela de derrota](https://github.com/user-attachments/assets/c86ff76d-775f-46d1-99f4-51b4c6e0800b)
 
+TELA FINAL DE VITORIA: 
+
+![WhatsApp Image 2025-04-11 at 14 08 55](https://github.com/user-attachments/assets/742a2ab9-2f8a-42aa-b388-b32e2ccadead)
