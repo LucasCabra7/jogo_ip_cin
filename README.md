@@ -122,7 +122,8 @@ TELA INICIAL:
 
 
 TELA DO JOGO COM COLETÁVEIS (CALANGO E BOLSA DE DINHEIRO) E INIMIGO:      
-![jogo](https://github.com/user-attachments/assets/52354274-a102-453b-a3c3-a672cd492ede)
+![jogo](https://github.com/user-attachments/assets/34942fd8-e72e-4b12-a3e6-6ba3c13fe3b1)
+
 
 
 TELA FINAL DE DERROTA: 
