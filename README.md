@@ -82,17 +82,20 @@ Pygame, Math para verificar as possíveis direções do INIMIGO para perseguiç�
 
 Todos os membros da equipe participaram ativamente do desenvolvimento do projeto, contribuindo de forma colaborativa por meio de canais como Discord e WhatsApp para tirar dúvidas, trocar ideias e propor melhorias. Cada integrante auxiliou na construção do código e na realização de alterações importantes, demonstrando comprometimento e trabalho em equipe ao longo de todo o processo.
 
-1. Lucas Cabral (<code>lsc9</code>): Responsável pela criação da Tela inicial, criação do lógica geral dos botões, criação da lógica do Player e main.
-   
-2. Gabriel Ferraz (<code>gfaa</code>): Reponsável pela criação dos Sprites, correção da lógica geral e criação da lógica do Player, Lógica da Colisão e Coletáveis.
+Todos os membros da equipe participaram ativamente do desenvolvimento do projeto, contribuindo de forma colaborativa por meio de canais como Discord e WhatsApp para tirar dúvidas, trocar ideias e propor melhorias. Cada integrante auxiliou na construção do código e na realização de alterações importantes, demonstrando comprometimento e trabalho em equipe ao longo de todo o processo.
+
+1. Lucas Cabral <lsc9> : Responsável pela criação da Tela inicial, criação do lógica geral dos botões, criação da lógica do Player e main.
  
-3. Leonilso Souza (<code>lssj</code>): Responsável pela criação do Mapa, colisão do generalisada do jogo e Bot de perseguição do Inimigo.
+2. Gabriel Ferraz <gfaa> : Responsável pela criação dos Sprites, correção da lógica geral e criação da lógica do Player, Lógica da Colisão e Coletáveis.
    
-4. José Ivan (<code>jixvj</code>): Responsável pela criação do bot de perseguição do Inimigo e coletáveis.
-   
-5. Lucas Matheus (<code>lmsf</code>): Responsável pela criação da tela final de caso de derota, e auxilío na lógica geral do jogo e criação dos sprites dos personagens e coletavéis.
-   
-6. Lucas Mendes (<code>lmpa</code>): Responsável pela criação das coletáveis com Bot de fuga do calango, criação de Sprites e Lógica geral do código.
+3. Leonilso Souza <lssj> : Responsável pela criação do Mapa, colisão do generalizada do jogo e Bot de perseguição do Inimigo.
+ 
+4. José Ivan <ixvj> : Responsável pela criação do bot de perseguição do Inimigo e coletáveis.
+
+5. Lucas Matheus <lmsf> : Responsável pela criação da tela final de caso de derrota, e auxílio na lógica geral do jogo e criação dos sprites dos personagens e coletáveis.
+ 
+6. Lucas Mendes <lmpa> : Responsável pela criação das coletáveis com Bot de fuga do calango, criação de Sprites e Lógica geral do código.
+
 
 <h2> 📋 CONCEITOS: </h2>
 
