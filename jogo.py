@@ -44,8 +44,8 @@ def iniciar_jogo():
     
     tempo_prisao = 0
     
-    fonte = pygame.font.Font(None, 36)
-    cor = (0, 0, 0)  
+    fonte = pygame.font.Font(None, 36) #36 original
+    cor = (0, 200, 0)  #R G B 
     
     pygame.mixer.music.load("assets/negroyazul.mp3") #musica de fundo
     pygame.mixer.music.set_volume(0.1)
@@ -89,9 +89,18 @@ def iniciar_jogo():
             tempo_prisao = pygame.time.get_ticks()    
         
         #debug
-        if not dinheiro_ativo and pygame.time.get_ticks() - tempo_desaparecimento_dinheiro > 1000 and dinheiro_coletado !=5:
-            dinheiro.x, dinheiro.y = random.choice([(64, 64), (65, 66), (67, 78), (70, 71), (150, 200)]) #escolhe uma posição aleatória para o dinheiro aparecer
+        if not dinheiro_ativo and pygame.time.get_ticks() - tempo_desaparecimento_dinheiro > 1000 and dinheiro_coletado !=5: #!Sugestão aumentar
+            dinheiro.x, dinheiro.y = random.choice([(34, 34), (170, 68), (102, 102), (170, 136), (340, 170) , (748, 34), (782, 136), (680, 238), (714, 340), (714, 442)]) #escolhe uma posição aleatória para o dinheiro aparecer
             dinheiro_ativo = True
+        
+        '''
+        pos nova 1: (34, 34), (170, 68), (102, 102), (170, 136), (340, 170)
+        
+        pos nova 2 : (748, 34), (782, 136), (680, 238), (714, 340), (714, 442)
+        
+        pos dinheiro original: (64, 64), (65, 66), (67, 78), (70, 71), (150, 200)
+        '''
+        
         
         
 
@@ -126,21 +135,30 @@ def iniciar_jogo():
 
         # Verifica se o calango deve reaparecer
         if not calango_ativo and pygame.time.get_ticks() - tempo_desaparecimento_calango > 2000:
-            calango.x, calango.y = random.choice([(34, 34), (102, 68), (170, 204), (340, 136), (476, 442)]) #escolhe uma posição aleatória para o calango aparecer
+            calango.x, calango.y = random.choice([(612, 34), (408, 136), (646, 272), (782, 340), (646, 408)]) #escolhe uma posição aleatória para o calango aparecer
+            
+            '''
+            pos nova 1 : (238, 68), (340, 102), (136, 204), (306, 238), (442, 272)
+            
+            pos nova 2 : (612, 34), (408, 136), (646, 272), (782, 340), (646, 408)
+            
+            pos calango original: (34, 34), (102, 68), (170, 204), (340, 136), (476, 442)
+            '''
+            
             calango_ativo = True
             calango_sound = pygame.mixer.Sound("assets/calango correndo.mp3")
             calango_sound.set_volume(0.3)
             calango_sound.play()
 
         texto = fonte.render(f"Calangos coletados: {calangos_coletados}", True, cor) # Texto que vai aparecer da pontuação
-        tela.blit(texto, (20, 20))  # Desenha o texto na posição (20, 20)
+        tela.blit(texto, (30, 7))  # Desenha o texto na posição original : (20, 20)
         
-        if boost and pygame.time.get_ticks() - tempo_boost > 2000: #quando acaba o tempo do boost
+        if boost and pygame.time.get_ticks() - tempo_boost > 2000: #quando acaba o tempo do boost de velocidade ( 2000 ) !!Suguestão aumentar
             jogador.velocidade = 1
             boost = False
             print('Boost acabou. Velocidade normal.')
             
-        if prisao_policial and pygame.time.get_ticks() - tempo_prisao > 2000: #quando acaba o tempo do boost
+        if prisao_policial and pygame.time.get_ticks() - tempo_prisao > 2000: #quando acaba o tempo da prisao 
             inimigo.velocidade = 1
             prisao_policial = False
             print('Policial solto')
