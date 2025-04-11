@@ -49,26 +49,38 @@
 
 - A arquitetura do projeto **"Cadê o Calanguinho?"** foi desenvolvida com base nos princípios da **Programação Orientada a Objetos**, seguindo a seguinte estrutura:
 
-1. Desenvolvemos a lógica geral para a construção da interface e funcionamento dos botões interativos;
+1. Inicialmente, desenvolvemos a lógica geral da interface, incluindo o funcionamento dos botões interativos;
 
-2. Implementamos a **tela inicial**, com os elementos visuais e os botões **"INICIAR"** e **"SAIR"**, permitindo ao usuário começar ou encerrar o jogo;
 
-3. Criamos a lógica para o personagem principal, o **"PLAYER"**, com a construção da interface utilizando **sprites**, permitindo a troca de animações ao se movimentar para a direita, esquerda, cima e baixo;
+2. Em seguida, implementamos a tela inicial, contendo os elementos visuais e os botões "INICIAR" e "SAIR", permitindo ao usuário iniciar ou encerrar o jogo;
 
-4. Desenvolvemos a lógica para o **INIMIGO**, incluindo a construção visual com **sprites** animados e um **bot de perseguição** que segue o **"PLAYER"** utilizando coordenadas cartesianas (vetores);
-5. utilizando a distância mínima entre o Player e o Inimigo. Quando ocorre a **colisão**, o jogo é encerrado e aparece uma Tela final de Derrota;
 
-6. Estruturamos o **mapa** do jogo por meio de uma **matriz** composta por **0's** (espaços livres) e **1's** (paredes), que define o formato e as barreiras do cenário;
+3. Criamos a lógica do personagem principal (PLAYER), utilizando sprites para representar seus movimentos. A animação muda de acordo com a direção em que o personagem se move: direita, esquerda, cima ou baixo;
 
-7. Criamos os elementos **coletáveis**:
-   - **Calangos**: 5 aparecem aleatoriamente no mapa. Cada um possui uma **IA de fuga**, que os faz se afastar do **"PLAYER"** utilizando a distância máxima entre o Calango e o Player. Ao ser coletado, o **"PLAYER"** recebe um **aumento de velocidade (+0.5)** por 1 segundos;
-   - **Sacos de dinheiro**: 2 aparecem aleatoriamente no mapa. Quando coletados, o **"INIMIGO"** é **paralisado por 1 segundo**;
 
-8. Implementamos a lógica de **colisão** entre o **"PLAYER"**, o **"INIMIGO"** e os **"CALANGOS"** com as áreas **sólidas** do mapa (as paredes), impedindo que atravessem barreiras. Para isso, utilizamos conceitos de **direção cartesiana com vetores**;
+4. Desenvolvemos também a lógica do INIMIGO, com sprites animados e um sistema de perseguição automática, no qual o inimigo segue o PLAYER com base em coordenadas cartesianas (vetores);
 
-9. Criamos a tela final do jogo, que é exibida quando ele chega ao fim. O encerramento pode ocorrer de duas maneiras: se o jogador (PLAYER) for capturado por um inimigo (INIMIGO) ou se conseguir coletar os 5 calangos (CALANGOS). Em ambos os casos, uma tela de finalização é exibida por 17 segundos, podendo o jogador aguardar esse tempo ou clicar em "Sair". Independentemente da escolha, o jogo retorna automaticamente para a tela inicial.
 
-10. Por fim, criamos um arquivo **Main** que iremos explicar sua funcionalidade através de um Diagrama de Estados:
+5. Essa perseguição é orientada pela distância mínima entre o PLAYER e o INIMIGO. Quando ocorre uma colisão, o jogo é encerrado e é exibida uma tela final de derrota.
+  
+6.  Estruturamos o mapa do jogo por meio de uma matriz, composta por 0’s (representando espaços livres) e 1’s (representando paredes), que define o formato do cenário e suas barreiras;
+  
+7. Criamos os elementos coletáveis:
+
+
+- Calangos: cinco aparecem aleatoriamente no mapa. Cada um possui uma IA de fuga, que os faz se afastar do PLAYER utilizando a distância máxima entre ambos. Ao ser coletado, o PLAYER recebe um aumento de velocidade de +0.5 por 1 segundo;
+
+
+- Sacos de dinheiro: dois aparecem aleatoriamente no mapa. Quando coletados, o INIMIGO é paralisado por 1 segundo;
+
+
+8. Implementamos a lógica de colisão entre o PLAYER, o INIMIGO e os CALANGOS com as áreas sólidas do mapa (as paredes), impedindo que atravessem as barreiras. Para isso, utilizamos conceitos de direção cartesiana com vetores;
+
+
+9. Criamos a tela final do jogo, exibida quando ele chega ao fim. O encerramento pode ocorrer de duas formas: caso o PLAYER seja capturado pelo INIMIGO, ou se conseguir coletar os cinco calangos. Em ambos os casos, uma tela de finalização é exibida por 17 segundos, podendo o jogador aguardar esse tempo ou clicar em "Sair". Após isso, o jogo retorna automaticamente para a tela inicial;
+
+
+10. Por fim, desenvolvemos um arquivo principal (Main), cuja funcionalidade será explicada através de um Diagrama de Estados.
 
 ![Sem título](https://github.com/user-attachments/assets/e4dda6ca-f37f-49c7-8887-9f2dda50185d)
 
