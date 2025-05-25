@@ -1,6 +1,7 @@
 <img width=100% src="https://capsule-render.vercel.app/api?type=waving&color=66CDAA&height=120&section=header"/>
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com/?color=FFFFFF&size=35&center=true&vCenter=true&width=1000&lines=Bem+vindo+ao+Projeto+de+Introdução+à+Programação+CIN)](https://git.io/typing-svg)
+<h1>PROJETO DE INTRODUÇÃO A PROGRAMAÇÃO - CIN/UFPE.</h1>
+<h2>CRIAÇÃO DE UM JOGO EM PYGAME.</h2>
 <div align="center">
 
   🤠 **EQUIPE 7:**
